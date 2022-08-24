@@ -1,0 +1,65 @@
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm verb cli C:\Program Files\nodejs\node.exe C:\Users\Creativa\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+npm info using npm@8.18.0
+npm info using node@v16.16.0
+npm timing npm:load:whichnode Completed in 1ms
+npm timing config:load:defaults Completed in 1ms
+npm timing config:load:file:C:\Users\Creativa\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 1ms
+npm timing config:load:builtin Completed in 1ms
+npm timing config:load:cli Completed in 2ms
+npm timing config:load:env Completed in 0ms
+npm timing config:load:file:C:\Users\Creativa\Desktop\Pruebas Integraciones\tmpBstackPackages\.npmrc Completed in 1ms
+npm timing config:load:project Completed in 5ms
+npm timing config:load:file:C:\Users\Creativa\.npmrc Completed in 0ms
+npm timing config:load:user Completed in 0ms
+npm timing config:load:file:C:\Users\Creativa\AppData\Roaming\npm\etc\npmrc Completed in 0ms
+npm timing config:load:global Completed in 0ms
+npm timing config:load:validate Completed in 0ms
+npm timing config:load:credentials Completed in 1ms
+npm timing config:load:setEnvs Completed in 1ms
+npm timing config:load Completed in 11ms
+npm timing npm:load:configload Completed in 11ms
+npm timing npm:load:mkdirpcache Completed in 0ms
+npm timing npm:load:mkdirplogs Completed in 0ms
+npm verb title npm install
+npm verb argv "install" "--legacy-peer-deps" "--loglevel" "verbose"
+npm timing npm:load:setTitle Completed in 1ms
+npm timing config:load:flatten Completed in 2ms
+npm timing npm:load:display Completed in 7ms
+npm verb logfile logs-max:10 dir:C:\Users\Creativa\AppData\Local\npm-cache\_logs
+npm verb logfile C:\Users\Creativa\AppData\Local\npm-cache\_logs\2022-08-24T19_48_14_462Z-debug-0.log
+npm timing npm:load:logFile Completed in 4ms
+npm timing npm:load:timers Completed in 0ms
+npm timing npm:load:configScope Completed in 0ms
+npm timing npm:load Completed in 25ms
+npm timing arborist:ctor Completed in 0ms
+npm timing arborist:ctor Completed in 0ms
+npm timing idealTree:init Completed in 8ms
+npm timing idealTree:userRequests Completed in 0ms
+npm timing idealTree:#root Completed in 0ms
+npm timing idealTree:buildDeps Completed in 1ms
+npm timing idealTree:fixDepFlags Completed in 0ms
+npm timing idealTree Completed in 10ms
+npm timing reify:loadTrees Completed in 11ms
+npm timing reify:diffTrees Completed in 0ms
+npm timing reify:retireShallow Completed in 1ms
+npm timing reify:createSparse Completed in 0ms
+npm timing reify:loadBundles Completed in 0ms
+npm timing reify:audit Completed in 0ms
+npm timing reify:unpack Completed in 0ms
+npm timing reify:unretire Completed in 0ms
+npm timing build:queue Completed in 0ms
+npm timing build:deps Completed in 1ms
+npm timing build Completed in 1ms
+npm timing reify:build Completed in 1ms
+npm timing reify:trash Completed in 0ms
+npm timing reify:save Completed in 2ms
+npm timing reify Completed in 22ms
+
+up to date, audited 1 package in 142ms
+
+found 0 vulnerabilities
+npm timing command:install Completed in 29ms
+npm verb exit 0
+npm timing npm Completed in 144ms
+npm info ok 
