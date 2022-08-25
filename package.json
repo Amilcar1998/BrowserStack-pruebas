@@ -8,9 +8,11 @@
     "report:cypress": "cypress run --record --key 7302b557-3796-4fd1-964e-b3058977a00d"
   },
   "dependencies": {
-    "cypress": "^9.7.0"
+    "cypress": "^9.7.0",
+    "cypress-mochawesome-reporter": "^3.2.2"
   },
   "devDependencies": {
-    "cypress-downloadfile": "^1.2.2"
+    "cypress-downloadfile": "^1.2.2",
+    "cypress-mochawesome-reporter": "^3.2.2"
   }
 }
