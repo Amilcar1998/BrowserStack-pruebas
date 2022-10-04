@@ -4,62 +4,95 @@ npm info using npm@8.18.0
 npm info using node@v16.16.0
 npm timing npm:load:whichnode Completed in 1ms
 npm timing config:load:defaults Completed in 1ms
-npm timing config:load:file:C:\Users\Creativa\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 1ms
-npm timing config:load:builtin Completed in 1ms
-npm timing config:load:cli Completed in 2ms
-npm timing config:load:env Completed in 0ms
-npm timing config:load:file:C:\Users\Creativa\Desktop\Pruebas Integraciones\tmpBstackPackages\.npmrc Completed in 1ms
+npm timing config:load:file:C:\Users\Creativa\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 3ms
+npm timing config:load:builtin Completed in 3ms
+npm timing config:load:cli Completed in 1ms
+npm timing config:load:env Completed in 1ms
+npm timing config:load:file:C:\Users\Creativa\Desktop\BrowserStack-pruebas\tmpBstackPackages\.npmrc Completed in 1ms
 npm timing config:load:project Completed in 5ms
 npm timing config:load:file:C:\Users\Creativa\.npmrc Completed in 0ms
 npm timing config:load:user Completed in 0ms
 npm timing config:load:file:C:\Users\Creativa\AppData\Roaming\npm\etc\npmrc Completed in 0ms
-npm timing config:load:global Completed in 0ms
-npm timing config:load:validate Completed in 0ms
+npm timing config:load:global Completed in 1ms
+npm timing config:load:validate Completed in 1ms
 npm timing config:load:credentials Completed in 1ms
 npm timing config:load:setEnvs Completed in 1ms
-npm timing config:load Completed in 11ms
-npm timing npm:load:configload Completed in 11ms
-npm timing npm:load:mkdirpcache Completed in 0ms
+npm timing config:load Completed in 15ms
+npm timing npm:load:configload Completed in 15ms
+npm timing npm:load:mkdirpcache Completed in 2ms
 npm timing npm:load:mkdirplogs Completed in 0ms
 npm verb title npm install
 npm verb argv "install" "--legacy-peer-deps" "--loglevel" "verbose"
 npm timing npm:load:setTitle Completed in 1ms
 npm timing config:load:flatten Completed in 2ms
-npm timing npm:load:display Completed in 7ms
+npm timing npm:load:display Completed in 5ms
 npm verb logfile logs-max:10 dir:C:\Users\Creativa\AppData\Local\npm-cache\_logs
-npm verb logfile C:\Users\Creativa\AppData\Local\npm-cache\_logs\2022-08-24T19_48_14_462Z-debug-0.log
-npm timing npm:load:logFile Completed in 4ms
+npm verb logfile C:\Users\Creativa\AppData\Local\npm-cache\_logs\2022-10-04T16_26_55_210Z-debug-0.log
+npm timing npm:load:logFile Completed in 5ms
 npm timing npm:load:timers Completed in 0ms
 npm timing npm:load:configScope Completed in 0ms
-npm timing npm:load Completed in 25ms
+npm timing npm:load Completed in 30ms
 npm timing arborist:ctor Completed in 0ms
 npm timing arborist:ctor Completed in 0ms
-npm timing idealTree:init Completed in 8ms
+npm timing idealTree:init Completed in 10ms
 npm timing idealTree:userRequests Completed in 0ms
-npm timing idealTree:#root Completed in 0ms
-npm timing idealTree:buildDeps Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/cypress-downloadfile 967ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cross-fetch 173ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fs-extra 425ms (cache revalidated)
+npm timing idealTree:#root Completed in 1404ms
+npm http fetch GET 200 https://registry.npmjs.org/node-fetch 155ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/jsonfile 156ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/universalify 769ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/graceful-fs 771ms (cache revalidated)
+npm timing idealTree:node_modules/cypress-downloadfile Completed in 777ms
+npm http fetch GET 200 https://registry.npmjs.org/whatwg-url 200ms (cache revalidated)
+npm timing idealTree:node_modules/cross-fetch Completed in 205ms
+npm timing idealTree:node_modules/fs-extra Completed in 8ms
+npm timing idealTree:node_modules/graceful-fs Completed in 0ms
+npm timing idealTree:node_modules/jsonfile Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/webidl-conversions 192ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/tr46 195ms (cache revalidated)
+npm timing idealTree:node_modules/node-fetch Completed in 197ms
+npm timing idealTree:node_modules/universalify Completed in 0ms
+npm timing idealTree:node_modules/whatwg-url Completed in 3ms
+npm timing idealTree:node_modules/tr46 Completed in 0ms
+npm timing idealTree:node_modules/webidl-conversions Completed in 0ms
+npm timing idealTree:buildDeps Completed in 2596ms
 npm timing idealTree:fixDepFlags Completed in 0ms
-npm timing idealTree Completed in 10ms
-npm timing reify:loadTrees Completed in 11ms
-npm timing reify:diffTrees Completed in 0ms
+npm timing idealTree Completed in 2608ms
+npm timing reify:loadTrees Completed in 2609ms
+npm timing reify:diffTrees Completed in 1ms
 npm timing reify:retireShallow Completed in 1ms
-npm timing reify:createSparse Completed in 0ms
+npm timing reify:createSparse Completed in 6ms
 npm timing reify:loadBundles Completed in 0ms
-npm timing reify:audit Completed in 0ms
-npm timing reify:unpack Completed in 0ms
+npm timing reifyNode:node_modules/webidl-conversions Completed in 36ms
+npm timing reifyNode:node_modules/universalify Completed in 35ms
+npm timing reifyNode:node_modules/jsonfile Completed in 40ms
+npm timing reifyNode:node_modules/cypress-downloadfile Completed in 41ms
+npm timing reifyNode:node_modules/graceful-fs Completed in 41ms
+npm timing reifyNode:node_modules/tr46 Completed in 46ms
+npm timing reifyNode:node_modules/whatwg-url Completed in 45ms
+npm timing reifyNode:node_modules/cross-fetch Completed in 50ms
+npm timing reifyNode:node_modules/node-fetch Completed in 76ms
+npm timing reifyNode:node_modules/fs-extra Completed in 88ms
+npm timing reify:unpack Completed in 89ms
 npm timing reify:unretire Completed in 0ms
 npm timing build:queue Completed in 0ms
-npm timing build:deps Completed in 1ms
+npm timing build:deps Completed in 0ms
 npm timing build Completed in 1ms
-npm timing reify:build Completed in 1ms
+npm timing reify:build Completed in 2ms
 npm timing reify:trash Completed in 0ms
-npm timing reify:save Completed in 2ms
-npm timing reify Completed in 22ms
+npm timing reify:save Completed in 4ms
+npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 386ms
+npm timing auditReport:getReport Completed in 388ms
+npm timing auditReport:init Completed in 0ms
+npm timing reify:audit Completed in 389ms
+npm timing reify Completed in 3010ms
 
-up to date, audited 1 package in 142ms
+added 10 packages, and audited 11 packages in 3s
 
 found 0 vulnerabilities
-npm timing command:install Completed in 29ms
+npm timing command:install Completed in 3020ms
 npm verb exit 0
-npm timing npm Completed in 144ms
+npm timing npm Completed in 3149ms
 npm info ok 
