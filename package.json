@@ -2,9 +2,6 @@
   "scripts": {
     "test": "test",
     "cypress:open": "cypress open",
-    "cypress:SV": "cypress run --browser chrome --spec cypress/integration/0-SimanSV/*.specs.js",
-    "pruebas:run": "cypress run --browser chrome --spec cypress/integration/1-getting-started/*.spec.js",
-    "report:stack": "browserstack-cypress run --sync ./cypress/integration/1-getting-started/*",
     "report:cypress": "cypress run --record --key 7302b557-3796-4fd1-964e-b3058977a00d"
   },
   "dependencies": {
