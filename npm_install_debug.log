@@ -3,21 +3,21 @@ npm info using npm@9.6.7
 npm info using node@v18.16.0
 npm verb title npm install
 npm verb argv "install" "--legacy-peer-deps" "--loglevel" "verbose"
-npm verb logfile logs-max:10 dir:C:\Users\AMILCAR LOPEZ\AppData\Local\npm-cache\_logs\2023-06-11T21_55_36_001Z-
-npm verb logfile C:\Users\AMILCAR LOPEZ\AppData\Local\npm-cache\_logs\2023-06-11T21_55_36_001Z-debug-0.log
-npm http fetch GET 200 https://registry.yarnpkg.com/cypress-downloadfile 23ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/cross-fetch 14ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/fs-extra 14ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/node-fetch 19ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/jsonfile 20ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/graceful-fs 23ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/universalify 22ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/whatwg-url 9ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/tr46 14ms (cache hit)
-npm http fetch GET 200 https://registry.yarnpkg.com/webidl-conversions 15ms (cache hit)
-npm http fetch POST 200 https://registry.yarnpkg.com/-/npm/v1/security/advisories/bulk 585ms
+npm verb logfile logs-max:10 dir:C:\Users\AMILCAR LOPEZ\AppData\Local\npm-cache\_logs\2023-06-16T17_07_48_053Z-
+npm verb logfile C:\Users\AMILCAR LOPEZ\AppData\Local\npm-cache\_logs\2023-06-16T17_07_48_053Z-debug-0.log
+npm http fetch GET 200 https://registry.yarnpkg.com/cypress-downloadfile 2825ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/fs-extra 245ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/cross-fetch 738ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/graceful-fs 128ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/node-fetch 145ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/universalify 307ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/jsonfile 317ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/whatwg-url 125ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/tr46 124ms (cache revalidated)
+npm http fetch GET 200 https://registry.yarnpkg.com/webidl-conversions 138ms (cache revalidated)
+npm http fetch POST 200 https://registry.yarnpkg.com/-/npm/v1/security/advisories/bulk 275ms
 
-added 10 packages, and audited 11 packages in 1s
+added 10 packages, and audited 11 packages in 5s
 
 found 0 vulnerabilities
 npm verb exit 0
