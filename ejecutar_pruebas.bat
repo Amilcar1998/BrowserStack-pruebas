@@ -19,34 +19,53 @@ cls
 echo =======================================================
 echo          EJECUCION DE PRUEBAS DE AUTOMATIZACION
 echo =======================================================
-echo 1. Ejecutar Suite Rodrigo Villanueva (6 Modulos E2E)
-echo 2. Ejecutar todas las pruebas Cypress (Modo Headless)
-echo 3. Abrir Cypress UI interactivo (cypress open)
-echo 4. Ejecutar en BrowserStack Cloud (browserstack-cypress run)
-echo 5. Ejecutar en LambdaTest Cloud (lambdatest-cypress run)
-echo 6. Ver reporte HTML personalizado en el navegador (Mochawesome)
-echo 7. Ver reporte de vulnerabilidades (npm audit)
-echo 8. Salir
+echo 1. Ejecutar Suite Rodrigo EN VIVO (Navegador Visible / Headed)
+echo 2. Ejecutar Suite Rodrigo (Modo Silencioso / Headless)
+echo 3. Abrir Cypress UI Interactivo (cypress open)
+echo 4. Ejecutar todas las pruebas Cypress locales
+echo 5. Ejecutar en BrowserStack Cloud (browserstack-cypress run)
+echo 6. Ejecutar en LambdaTest Cloud (lambdatest-cypress run)
+echo 7. Ver reporte HTML personalizado en el navegador (Mochawesome)
+echo 8. Ver reporte de vulnerabilidades (npm audit)
+echo 9. Salir
 echo =======================================================
-set /p OPCION="Seleccione una opcion (1-8): "
+set /p OPCION="Seleccione una opcion (1-9): "
 
-if "%OPCION%"=="1" goto RODRIGO_RUN
-if "%OPCION%"=="2" goto LOCAL_RUN
+if "%OPCION%"=="1" goto RODRIGO_HEADED
+if "%OPCION%"=="2" goto RODRIGO_RUN
 if "%OPCION%"=="3" goto OPEN_UI
-if "%OPCION%"=="4" goto BS_RUN
-if "%OPCION%"=="5" goto LT_RUN
-if "%OPCION%"=="6" goto VIEW_REPORT
-if "%OPCION%"=="7" goto AUDIT_RUN
-if "%OPCION%"=="8" exit /b 0
+if "%OPCION%"=="4" goto LOCAL_RUN
+if "%OPCION%"=="5" goto BS_RUN
+if "%OPCION%"=="6" goto LT_RUN
+if "%OPCION%"=="7" goto VIEW_REPORT
+if "%OPCION%"=="8" goto AUDIT_RUN
+if "%OPCION%"=="9" exit /b 0
 
 echo Opcion no valida.
+pause
+goto MENU
+
+:RODRIGO_HEADED
+echo.
+echo =======================================================
+echo  Ejecutando Suite Rodrigo Villanueva EN VIVO (Headed)...
+echo =======================================================
+if exist ".\node_modules\.bin\cypress.cmd" (
+    call ".\node_modules\.bin\cypress.cmd" run --headed --browser chrome --spec "cypress/integration/rodrigo-villanueva/*.spec.js"
+) else (
+    call npx cypress run --headed --browser chrome --spec "cypress/integration/rodrigo-villanueva/*.spec.js"
+)
+node scripts/traducir_reporte.js
+if exist ".\cypress\results\mochawesome\index.html" (
+    start "" ".\cypress\results\mochawesome\index.html"
+)
 pause
 goto MENU
 
 :RODRIGO_RUN
 echo.
 echo =======================================================
-echo  Ejecutando Suite Automatizada Rodrigo Villanueva E2E...
+echo  Ejecutando Suite Rodrigo Villanueva en Modo Headless...
 echo =======================================================
 if exist ".\node_modules\.bin\cypress.cmd" (
     call ".\node_modules\.bin\cypress.cmd" run --spec "cypress/integration/rodrigo-villanueva/*.spec.js"
