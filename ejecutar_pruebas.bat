@@ -19,18 +19,19 @@ cls
 echo =======================================================
 echo          EJECUCION DE PRUEBAS DE AUTOMATIZACION
 echo =======================================================
-echo 1. Ejecutar Suite Rodrigo EN VIVO (Navegador Chrome Visible)
+echo 1. Ejecutar Suite Rodrigo EN VIVO (Chrome + Evidencias)
 echo 2. Ejecutar Suite Rodrigo (Modo Silencioso / Headless)
 echo 3. Abrir Cypress UI Interactivo (cypress open)
 echo 4. Ejecutar todas las pruebas Cypress locales
 echo 5. Ejecutar en BrowserStack Cloud (browserstack-cypress run)
 echo 6. Ejecutar en LambdaTest Cloud (lambdatest-cypress run)
 echo 7. Ver Dashboard Ejecutivo Moderno (dashboard_ejecutivo.html)
-echo 8. Ver reporte HTML Mochawesome traducido
-echo 9. Ver reporte de vulnerabilidades (npm audit)
-echo 10. Salir
+echo 8. Ver Dossier Oficial de Evidencias QA (Captura por cada CP)
+echo 9. Ver reporte HTML Mochawesome traducido
+echo 10. Ver reporte de vulnerabilidades (npm audit)
+echo 11. Salir
 echo =======================================================
-set /p OPCION="Seleccione una opcion (1-10): "
+set /p OPCION="Seleccione una opcion (1-11): "
 
 if "%OPCION%"=="1" goto RODRIGO_HEADED
 if "%OPCION%"=="2" goto RODRIGO_RUN
@@ -39,9 +40,10 @@ if "%OPCION%"=="4" goto LOCAL_RUN
 if "%OPCION%"=="5" goto BS_RUN
 if "%OPCION%"=="6" goto LT_RUN
 if "%OPCION%"=="7" goto VIEW_MODERN_DASHBOARD
-if "%OPCION%"=="8" goto VIEW_REPORT
-if "%OPCION%"=="9" goto AUDIT_RUN
-if "%OPCION%"=="10" exit /b 0
+if "%OPCION%"=="8" goto VIEW_DOSSIER
+if "%OPCION%"=="9" goto VIEW_REPORT
+if "%OPCION%"=="10" goto AUDIT_RUN
+if "%OPCION%"=="11" exit /b 0
 
 echo Opcion no valida.
 pause
@@ -59,8 +61,9 @@ if exist ".\node_modules\.bin\cypress.cmd" (
 )
 node scripts/traducir_reporte.js
 node scripts/generar_dashboard_moderno.js
-if exist ".\cypress\results\dashboard_ejecutivo.html" (
-    start "" ".\cypress\results\dashboard_ejecutivo.html"
+node scripts/generar_dossier_evidencias.js
+if exist ".\cypress\results\dossier_evidencias_qa.html" (
+    start "" ".\cypress\results\dossier_evidencias_qa.html"
 )
 pause
 goto MENU
@@ -77,6 +80,7 @@ if exist ".\node_modules\.bin\cypress.cmd" (
 )
 node scripts/traducir_reporte.js
 node scripts/generar_dashboard_moderno.js
+node scripts/generar_dossier_evidencias.js
 pause
 goto MENU
 
@@ -90,6 +94,19 @@ if exist ".\node_modules\.bin\cypress.cmd" (
 )
 node scripts/traducir_reporte.js
 node scripts/generar_dashboard_moderno.js
+node scripts/generar_dossier_evidencias.js
+pause
+goto MENU
+
+:VIEW_DOSSIER
+echo.
+echo Abriendo Dossier Oficial de Evidencias QA con Capturas por CP...
+node scripts/generar_dossier_evidencias.js
+if exist ".\cypress\results\dossier_evidencias_qa.html" (
+    start "" ".\cypress\results\dossier_evidencias_qa.html"
+) else (
+    echo Aun no existe el archivo de evidencias. Ejecute primero alguna prueba.
+)
 pause
 goto MENU
 
