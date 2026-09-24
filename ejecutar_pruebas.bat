@@ -2,16 +2,13 @@
 setlocal enabledelayedexpansion
 title Ejecutor de Pruebas Cypress / BrowserStack
 
-:: Detectar Node.js
-where node >nul 2>&1
-if %ERRORLEVEL% NEQ 0 (
-    if exist "C:\Program Files\heroku\client\bin\node.exe" (
-        set "PATH=C:\Program Files\heroku\client\bin;!PATH!"
-    ) else if exist "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VisualStudio\NodeJs\node.exe" (
-        set "PATH=C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VisualStudio\NodeJs;!PATH!"
-    ) else if exist "C:\Program Files\nodejs\node.exe" (
-        set "PATH=C:\Program Files\nodejs;!PATH!"
-    )
+:: Detectar y configurar entorno Node.js / NPM
+if exist "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VisualStudio\NodeJs\npm.cmd" (
+    set "PATH=C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VisualStudio\NodeJs;!PATH!"
+) else if exist "C:\Program Files\nodejs\npm.cmd" (
+    set "PATH=C:\Program Files\nodejs;!PATH!"
+) else if exist "C:\Program Files\heroku\client\bin\node.exe" (
+    set "PATH=C:\Program Files\heroku\client\bin;!PATH!"
 )
 
 :MENU
