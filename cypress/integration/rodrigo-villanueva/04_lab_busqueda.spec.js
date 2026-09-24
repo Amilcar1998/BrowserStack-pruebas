@@ -1,41 +1,51 @@
-describe('Laboratorio QA - Módulo 3: Búsqueda y Filtro de Resultados', () => {
+describe('Laboratorio QA - Módulo 3: Búsqueda y Filtro de Resultados Exhaustivo', () => {
     const BUSQUEDA_URL = 'https://rodrigovillanueva.com.mx/laboratorio/modulo3_busqueda.html';
 
     beforeEach(() => {
         cy.visit(BUSQUEDA_URL);
     });
 
-    it('Debe mostrar la barra de búsqueda y el botón buscar', () => {
-        cy.get('[data-testid="input-busqueda"]').should('be.visible');
-        cy.get('[data-testid="btn-buscar"]').should('be.visible');
+    it('1. Debe mostrar la interfaz de búsqueda con campo de entrada y botón de acción', () => {
+        cy.get('[data-testid="input-busqueda"]')
+            .should('be.visible')
+            .and('have.attr', 'placeholder', 'Escribe el nombre de un producto...');
+        cy.get('[data-testid="btn-buscar"]').should('be.visible').and('contain', 'Buscar');
         cy.get('[data-testid="div-resultados"]').should('exist');
     });
 
-    it('Debe validar que el término de búsqueda no esté vacío ni sea menor a 2 caracteres', () => {
-        // Búsqueda vacía
+    it('2. Debe validar mensaje de error cuando el campo de búsqueda está vacío', () => {
         cy.get('[data-testid="btn-buscar"]').click();
-        cy.get('[data-testid="div-resultados"]').should('contain', 'Escribe algo para buscar');
-
-        // Búsqueda con 1 solo caracter
-        cy.get('[data-testid="input-busqueda"]').type('a');
-        cy.get('[data-testid="btn-buscar"]').click();
-        cy.get('[data-testid="div-resultados"]').should('contain', 'Escribe al menos 2 caracteres');
+        cy.get('[data-testid="div-resultados"]')
+            .should('be.visible')
+            .and('contain', 'Escribe algo para buscar');
+        cy.get('[data-testid="input-busqueda"]').should('have.class', 'input-error');
     });
 
-    it('Debe buscar productos existentes y mostrar la lista coincidente', () => {
-        cy.get('[data-testid="input-busqueda"]').clear().type('Laptop');
+    it('3. Debe validar que no se permitan búsquedas menores a 2 caracteres', () => {
+        cy.get('[data-testid="input-busqueda"]').type('a');
+        cy.get('[data-testid="btn-buscar"]').click();
+        cy.get('[data-testid="div-resultados"]')
+            .should('be.visible')
+            .and('contain', 'Escribe al menos 2 caracteres');
+    });
+
+    it('4. Debe realizar búsqueda insensible a mayúsculas y minúsculas (case insensitive)', () => {
+        cy.get('[data-testid="input-busqueda"]').clear().type('LAPTOP');
         cy.get('[data-testid="btn-buscar"]').click();
 
         cy.get('[data-testid="div-resultados"]').within(() => {
-            cy.get('li').should('have.length.at.least', 1);
+            cy.get('li').should('have.length', 2);
             cy.contains('Laptop Dell').should('be.visible');
+            cy.contains('Laptop HP').should('be.visible');
         });
     });
 
-    it('Debe mostrar mensaje cuando no hay resultados para un término inexistente', () => {
-        cy.get('[data-testid="input-busqueda"]').clear().type('InexistenteXYZ123');
+    it('5. Debe validar búsqueda con caracteres especiales o productos no existentes', () => {
+        cy.get('[data-testid="input-busqueda"]').clear().type('!@#$%^&*()_Inexistente');
         cy.get('[data-testid="btn-buscar"]').click();
 
-        cy.get('[data-testid="div-resultados"]').should('contain', 'No se encontraron resultados');
+        cy.get('[data-testid="div-resultados"]')
+            .should('be.visible')
+            .and('contain', 'No se encontraron resultados');
     });
 });

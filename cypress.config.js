@@ -4,6 +4,8 @@ const { downloadFile } = require('cypress-downloadfile/lib/addPlugin')
 module.exports = defineConfig({
   projectId: '72ch4c',
   chromeWebSecurity: false,
+  viewportWidth: 1920,
+  viewportHeight: 1080,
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     reportDir: 'cypress/results/mochawesome',

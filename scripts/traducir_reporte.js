@@ -10,65 +10,72 @@ if (!fs.existsSync(reportPath)) {
 
 let html = fs.readFileSync(reportPath, 'utf8');
 
-// Inyección de estilos modernos y elegantes
+// Inyección de estilos ultra-nítidos (High-DPI / Retinas / Anti-pixelación)
 const customStyles = `
 <style id="custom-qa-theme">
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-  
+  /* Tipografía y Anti-Aliasing Ultra Nítido */
+  *, *::before, *::after {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+  }
+
   body, html {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-    background-color: #0f172a !important;
-    color: #e2e8f0 !important;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    background-color: #0b0f19 !important;
+    color: #f1f5f9 !important;
+    margin: 0;
+    padding: 0;
   }
   
-  /* Cabecera estilizada */
-  header, nav, [class*="navbar"] {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  /* Barra superior / Navbar */
+  header, nav, [class*="navbar"], [class*="header"] {
+    background: #111827 !important;
+    border-bottom: 1px solid #1f2937 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
   }
-  
-  /* Tarjetas de métricas */
+
+  /* Tarjetas y Contenedores con bordes limpios y sin distorsión */
   [class*="summary"], [class*="statusbar"], [class*="card"], [class*="suite-"] {
-    background-color: #1e293b !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25) !important;
-    color: #f8fafc !important;
-    margin-bottom: 16px !important;
+    background-color: #111827 !important;
+    border: 1px solid #1f2937 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+    color: #f9fafb !important;
+    transform: none !important;
+    filter: none !important;
   }
 
-  /* Textos secundarios */
-  p, span, [class*="text-muted"], [class*="duration"], [class*="small"] {
-    color: #cbd5e1 !important;
+  /* Asegurar que los gráficos Canvas se rendericen al 100% de nitidez */
+  canvas {
+    image-rendering: auto !important;
+    max-width: 100% !important;
   }
 
-  /* Badges de estado */
+  /* Estados y Colores Vibrantes */
   [class*="passed"], [class*="pass"] {
-    color: #4ade80 !important;
+    color: #10b981 !important;
+    font-weight: 600 !important;
   }
   [class*="failed"], [class*="fail"] {
-    color: #f87171 !important;
+    color: #ef4444 !important;
+    font-weight: 600 !important;
   }
   [class*="pending"] {
     color: #38bdf8 !important;
   }
 
-  /* Botones y filtros */
-  button, select, input {
-    border-radius: 8px !important;
-    transition: all 0.2s ease !important;
-  }
-  
-  /* Mejorar visualización de imágenes/capturas */
+  /* Capturas de pantalla e imágenes nítidas */
   img {
-    border-radius: 8px !important;
-    border: 2px solid #334155 !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
-    transition: transform 0.2s ease !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: crisp-edges !important;
+    border-radius: 6px !important;
+    border: 1px solid #374151 !important;
   }
-  img:hover {
-    transform: scale(1.02);
+
+  /* Botones estilizados */
+  button, input, select {
+    border-radius: 6px !important;
   }
 </style>
 
@@ -82,7 +89,7 @@ const customStyles = `
                  .replace(/\\bPending\\b/gi, 'Pendientes')
                  .replace(/\\bSkipped\\b/gi, 'Omitidas')
                  .replace(/\\bDuration\\b/gi, 'Duración')
-                 .replace(/\\bSuites\\b/gi, 'Módulos')
+                 .replace(/\\bSuites\\b/gi, 'Suites')
                  .replace(/\\bTests\\b/gi, 'Pruebas')
                  .replace(/\\bFilter Tests\\b/gi, 'Filtrar Pruebas')
                  .replace(/\\bShow Hooks\\b/gi, 'Mostrar Hooks')
@@ -97,23 +104,17 @@ const customStyles = `
     
     setTimeout(() => {
       translateNode(document.body);
-    }, 300);
-
-    // Observer para cambios dinámicos (filtros/clics)
-    const observer = new MutationObserver(() => {
-      observer.disconnect();
-      translateNode(document.body);
-      observer.observe(document.body, { childList: true, subtree: true });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+    }, 400);
   });
 </script>
 `;
 
-if (!html.includes('custom-qa-theme')) {
-  html = html.replace('</head>', customStyles + '</head>');
-  fs.writeFileSync(reportPath, html, 'utf8');
-  console.log('✅ Reporte Mochawesome traducido y estilizado en español exitosamente.');
-} else {
-  console.log('ℹ️ El reporte ya contaba con la personalización en español.');
-}
+// Eliminar inyecciones previas si existían
+html = html.replace(/<style id="custom-qa-theme">[\s\S]*?<\/style>/gi, '');
+html = html.replace(/<script id="custom-qa-translator">[\s\S]*?<\/script>/gi, '');
+
+// Insertar al final del head
+html = html.replace('</head>', `${customStyles}</head>`);
+
+fs.writeFileSync(reportPath, html, 'utf8');
+console.log('✅ Reporte Mochawesome optimizado en alta definición y español exitosamente.');
