@@ -198,7 +198,11 @@ echo =======================================================
 start https://automate.browserstack.com/dashboard/v2
 echo.
 echo Ejecutando pruebas en BrowserStack Cloud (Multi-Navegador)...
-call npx browserstack-cypress run
+if exist ".\node_modules\.bin\browserstack-cypress.cmd" (
+    call ".\node_modules\.bin\browserstack-cypress.cmd" run
+) else (
+    call npx browserstack-cypress run
+)
 node scripts/generar_dossier_browserstack.js
 if exist ".\cypress\results\dossier_browserstack_crossbrowser.html" (
     start "" ".\cypress\results\dossier_browserstack_crossbrowser.html"
@@ -214,7 +218,11 @@ echo =======================================================
 start https://automation.lambdatest.com/build
 echo.
 echo Ejecutando pruebas en LambdaTest Cloud...
-call npx lambdatest-cypress run --sync=true --specs="cypress/integration/rodrigo-villanueva/*.spec.js"
+if exist ".\node_modules\.bin\lambdatest-cypress.cmd" (
+    call ".\node_modules\.bin\lambdatest-cypress.cmd" run --sync=true --specs="cypress/integration/rodrigo-villanueva/*.spec.js"
+) else (
+    call npx lambdatest-cypress run --sync=true --specs="cypress/integration/rodrigo-villanueva/*.spec.js"
+)
 pause
 goto MENU
 
