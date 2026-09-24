@@ -2,15 +2,18 @@
   "scripts": {
     "test": "test",
     "cypress:open": "cypress open",
-    "report:cypress": "cypress run --record --key 7302b557-3796-4fd1-964e-b3058977a00d"
-  },
-  "dependencies": {
-    "cypress": "^9.7.0",
-    "cypress-mochawesome-reporter": "^3.2.2",
-    "lambdatest-cypress-cli": "^3.0.15"
+    "report:cypress": "cypress run --record --key 7302b557-3796-4fd1-964e-b3058977a00d",
+    "report:translate": "node scripts/traducir_reporte.js"
   },
   "devDependencies": {
-    "cypress-downloadfile": "^1.2.2",
-    "cypress-mochawesome-reporter": "^3.2.2"
+    "browserstack-cypress-cli": "^1.37.1",
+    "cypress": "^16.1.0",
+    "cypress-downloadfile": "^1.2.4",
+    "cypress-mochawesome-reporter": "^5.0.0",
+    "lambdatest-cypress-cli": "^3.0.50"
+  },
+  "overrides": {
+    "serialize-javascript": "^7.0.5",
+    "uuid": "^11.1.1"
   }
 }

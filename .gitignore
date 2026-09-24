@@ -1,0 +1,9 @@
+node_modules/
+tmpBstackPackages/
+results/
+log/
+Downloads/
+npm_install_debug.log
+package-lock.json.bak
+.DS_Store
+Thumbs.db

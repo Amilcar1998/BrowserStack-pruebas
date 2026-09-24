@@ -1,33 +1,35 @@
 
 
 {
-    "auth": {
-      "username": "bsuser_ZOBX4c",
-      "access_key": "HwcR3YHygZ5HzhJE2m5e"
+  "auth": {
+    "username": "beatrizcalzada_5IgbN2",
+    "access_key": "CmJsK6nFG6yNrSCY9VsN"
+  },
+  "browsers": [
+    {
+      "browser": "chrome",
+      "os": "Windows 11",
+      "versions": ["latest"]
     },
-    "browsers": [{
-        "browser": "chrome",
-        "os": "Windows 10",
-        "versions": ["latest", "latest - 1"]
-      },
-      {
-        "browser": "firefox",
-        "os": "OS X Mojave",
-        "versions": ["latest", "latest - 1"]
-      }
-    ],
-    "run_settings": {
-        "npm_dependencies": {
-            "cypress-downloadfile": "^1.2.1"
-        },
-      "cypress_config_file": "./cypress.json",
-      "cypress_version": "9.7.0",
-      "project_name": "Browser-Stakdemo",
-      "build_name": "Build no: 1",
-      "parallels": 4,
-      "exclude": ["some-folder/test.js", "static/*.pdf"]
+    {
+      "browser": "firefox",
+      "os": "OS X Sonoma",
+      "versions": ["latest"]
+    }
+  ],
+  "run_settings": {
+    "npm_dependencies": {
+      "cypress-downloadfile": "^1.2.4",
+      "cypress-mochawesome-reporter": "^5.0.0"
+    },
+    "cypress_config_file": "./cypress.config.js",
+    "cypress_version": "13",
+    "project_name": "Browser-Stakdemo",
+    "build_name": "Build no: 1",
+    "parallels": 2,
+    "spec_timeout": 10,
+    "exclude": ["some-folder/test.js", "static/*.pdf"]
   }
-  
 }
 
   
