@@ -3,7 +3,7 @@ describe('Automatización de Búsqueda Web con Cypress', () => {
     cy.on('uncaught:exception', () => false)
   })
 
-  it('Debe buscar un término en Wikipedia y verificar los resultados encontrados', () => {
+  it('Validar búsqueda de un término en Wikipedia y verificar los resultados encontrados', () => {
     // 1. Visitar el buscador de Wikipedia
     cy.visit('https://es.wikipedia.org/wiki/Especial:Buscar')
 
@@ -32,7 +32,7 @@ describe('Automatización de Búsqueda Web con Cypress', () => {
     cy.screenshot('wikipedia-articulo-encontrado')
   })
 
-  it('Debe realizar una búsqueda interactiva en el portal Cypress Kitchensink', () => {
+  it('Validar búsqueda interactiva en el portal Cypress Kitchensink', () => {
     // 1. Visitar la web de pruebas oficial de Cypress
     cy.visit('https://example.cypress.io/commands/actions')
 

@@ -5,13 +5,13 @@ describe('Laboratorio QA - Módulo 4: E-Commerce y Carrito de Compras', () => {
         cy.visit(ECOMMERCE_URL);
     });
 
-    it('Debe renderizar la lista de productos disponibles en el catálogo', () => {
+    it('Validar renderizado del catálogo de productos y estado inicial del carrito vacío', () => {
         cy.get('#productos .producto-card').should('have.length.at.least', 4);
         cy.get('#mensajeCarrito').should('be.visible').and('contain', 'Tu carrito está vacío');
         cy.get('#total').should('contain', '0');
     });
 
-    it('Debe agregar productos al carrito y actualizar el contador total', () => {
+    it('Validar agregar productos al carrito y la actualización reactiva del contador total', () => {
         // Agregar primer producto
         cy.get('#productos .producto-card').first().find('button').click();
         

@@ -5,7 +5,7 @@ describe('Laboratorio QA - Módulo 6: Alertas Nativas y Modal CRUD', () => {
         cy.visit(ALERTAS_URL);
     });
 
-    it('Debe interactuar con la Alerta nativa (window:alert)', () => {
+    it('Validar interacción y confirmación con la Alerta nativa (window:alert)', () => {
         const stub = cy.stub();
         cy.on('window:alert', stub);
 
@@ -14,13 +14,13 @@ describe('Laboratorio QA - Módulo 6: Alertas Nativas y Modal CRUD', () => {
         cy.get('[data-testid="estado-alerta"]').should('contain', 'Se mostró y aceptó la alerta');
     });
 
-    it('Debe interactuar con la ventana Confirm (window:confirm)', () => {
+    it('Validar interacción de confirmación con ventana Confirm (window:confirm)', () => {
         cy.on('window:confirm', () => true);
         cy.get('[data-testid="btn-confirm"]').click();
         cy.get('[data-testid="estado-confirm"]').should('contain', 'Se aceptó la confirmación');
     });
 
-    it('Debe interactuar con el Prompt nativo (window:prompt)', () => {
+    it('Validar interacción y entrada de texto en el Prompt nativo (window:prompt)', () => {
         cy.window().then((win) => {
             cy.stub(win, 'prompt').returns('Cypress Automation User');
         });
@@ -28,7 +28,7 @@ describe('Laboratorio QA - Módulo 6: Alertas Nativas y Modal CRUD', () => {
         cy.get('[data-testid="estado-prompt"]').should('contain', 'Hola, Cypress Automation User');
     });
 
-    it('Debe abrir el Modal, registrar un nuevo contacto y visualizarlo en la tabla CRUD', () => {
+    it('Validar apertura de Modal, captura de datos y visualización del nuevo registro en la tabla CRUD', () => {
         // Abrir modal
         cy.get('[data-testid="btn-open-crud"]').click();
         cy.get('[data-testid="wrap-modal-form"]').should('have.attr', 'aria-hidden', 'false');

@@ -5,7 +5,7 @@ describe('Laboratorio QA - Módulo 5: Subida de Archivos', () => {
         cy.visit(UPLOAD_URL);
     });
 
-    it('1. Debe validar error cuando se intenta enviar sin seleccionar archivo', () => {
+    it('Validar mensaje de error al enviar formulario sin archivo seleccionado', () => {
         cy.get('#formUpload').submit();
         cy.get('#mensajeUpload')
             .should('be.visible')
@@ -13,7 +13,7 @@ describe('Laboratorio QA - Módulo 5: Subida de Archivos', () => {
             .and('have.css', 'color', 'rgb(255, 0, 0)');
     });
 
-    it('2. Debe subir un archivo real desde el input file con selectFile', () => {
+    it('Validar subida de archivo físico desde computadora con selectFile', () => {
         cy.get('#inputFile').selectFile('cypress/fixtures/sample_img.png');
         cy.get('#formUpload').submit();
 
@@ -23,7 +23,7 @@ describe('Laboratorio QA - Módulo 5: Subida de Archivos', () => {
             .and('have.css', 'color', 'rgb(0, 128, 0)');
     });
 
-    it('3. Debe seleccionar un archivo de ejemplo desde la lista desplegable', () => {
+    it('Validar selección y carga de archivo de ejemplo desde la lista desplegable', () => {
         cy.get('#selectFile').select('ejemplo2.pdf');
         cy.get('#formUpload').submit();
 

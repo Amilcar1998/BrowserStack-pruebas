@@ -4,7 +4,7 @@ describe('Búsqueda automatizada en Google', () => {
     cy.on('uncaught:exception', () => false)
   })
 
-  it('Debe buscar un término en Google y validar los resultados', () => {
+  it('Validar búsqueda de un término en Google y comprobar los resultados cargados', () => {
     // 1. Visitar Google
     cy.visit('https://www.google.com')
 

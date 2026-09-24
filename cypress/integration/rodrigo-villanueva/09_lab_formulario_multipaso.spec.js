@@ -5,14 +5,14 @@ describe('Laboratorio QA - Módulo 13: Formulario Multipaso (Wizard)', () => {
         cy.visit(MULTIPASO_URL);
     });
 
-    it('1. Debe validar campos requeridos del Paso 1 antes de avanzar', () => {
+    it('Validar campos requeridos en el Paso 1 antes de permitir avanzar', () => {
         cy.get('#nextBtn').click();
         cy.get('#nombre').should('have.class', 'input-error');
         cy.get('#correo').should('have.class', 'input-error');
         cy.get('.form-step').first().should('be.visible');
     });
 
-    it('2. Debe completar el Paso 1 y navegar al Paso 2', () => {
+    it('Validar llenado correcto del Paso 1 y transición interactiva al Paso 2', () => {
         cy.get('#nombre').type('Fernando Castro');
         cy.get('#correo').type('fernando.castro@test.com');
         cy.get('#fechaNac').type('20/04/1992', { force: true });
@@ -25,7 +25,7 @@ describe('Laboratorio QA - Módulo 13: Formulario Multipaso (Wizard)', () => {
         cy.get('#prevBtn').should('be.visible');
     });
 
-    it('3. Debe permitir regresar al paso anterior mediante el botón Anterior', () => {
+    it('Validar navegación hacia el paso anterior con el botón Anterior manteniendo los datos', () => {
         // Llenar paso 1
         cy.get('#nombre').type('Fernando Castro');
         cy.get('#correo').type('fernando.castro@test.com');

@@ -5,7 +5,7 @@ describe('Laboratorio QA - Módulo 3: Búsqueda y Filtro de Resultados Exhaustiv
         cy.visit(BUSQUEDA_URL);
     });
 
-    it('1. Debe mostrar la interfaz de búsqueda con campo de entrada y botón de acción', () => {
+    it('Validar interfaz de búsqueda con campo de entrada, placeholder y botón de acción', () => {
         cy.get('[data-testid="input-busqueda"]')
             .should('be.visible')
             .and('have.attr', 'placeholder', 'Escribe el nombre de un producto...');
@@ -13,7 +13,7 @@ describe('Laboratorio QA - Módulo 3: Búsqueda y Filtro de Resultados Exhaustiv
         cy.get('[data-testid="div-resultados"]').should('exist');
     });
 
-    it('2. Debe validar mensaje de error cuando el campo de búsqueda está vacío', () => {
+    it('Validar mensaje de error cuando el campo de búsqueda se envía vacío', () => {
         cy.get('[data-testid="btn-buscar"]').click();
         cy.get('[data-testid="div-resultados"]')
             .should('be.visible')
@@ -21,7 +21,7 @@ describe('Laboratorio QA - Módulo 3: Búsqueda y Filtro de Resultados Exhaustiv
         cy.get('[data-testid="input-busqueda"]').should('have.class', 'input-error');
     });
 
-    it('3. Debe validar que no se permitan búsquedas menores a 2 caracteres', () => {
+    it('Validar que no se permitan búsquedas menores a 2 caracteres', () => {
         cy.get('[data-testid="input-busqueda"]').type('a');
         cy.get('[data-testid="btn-buscar"]').click();
         cy.get('[data-testid="div-resultados"]')
@@ -29,7 +29,7 @@ describe('Laboratorio QA - Módulo 3: Búsqueda y Filtro de Resultados Exhaustiv
             .and('contain', 'Escribe al menos 2 caracteres');
     });
 
-    it('4. Debe realizar búsqueda insensible a mayúsculas y minúsculas (case insensitive)', () => {
+    it('Validar búsqueda insensible a mayúsculas y minúsculas (case insensitive)', () => {
         cy.get('[data-testid="input-busqueda"]').clear().type('LAPTOP');
         cy.get('[data-testid="btn-buscar"]').click();
 
@@ -40,7 +40,7 @@ describe('Laboratorio QA - Módulo 3: Búsqueda y Filtro de Resultados Exhaustiv
         });
     });
 
-    it('5. Debe validar búsqueda con caracteres especiales o productos no existentes', () => {
+    it('Validar mensaje cuando se buscan caracteres especiales o productos inexistentes', () => {
         cy.get('[data-testid="input-busqueda"]').clear().type('!@#$%^&*()_Inexistente');
         cy.get('[data-testid="btn-buscar"]').click();
 

@@ -5,7 +5,7 @@ describe('Laboratorio QA - Módulo 2: Formularios con Validaciones y Casos de Bo
         cy.visit(FORM_URL);
     });
 
-    it('1. Debe validar campos obligatorios cuando se envía el formulario vacío', () => {
+    it('Validar campos obligatorios al enviar el formulario vacío', () => {
         cy.get('[data-testid="btn-enviar"]').click();
 
         cy.get('#error-nombre').should('contain', 'El nombre es obligatorio');
@@ -20,37 +20,37 @@ describe('Laboratorio QA - Módulo 2: Formularios con Validaciones y Casos de Bo
         cy.get('#error-terminos').should('contain', 'Debes aceptar los términos');
     });
 
-    it('2. Campo Nombre: Debe validar longitud mínima (<4 caracteres)', () => {
+    it('Validar longitud mínima requerida en el campo Nombre (<4 caracteres)', () => {
         cy.get('[data-testid="input-nombre"]').type('Ana');
         cy.get('[data-testid="btn-enviar"]').click();
         cy.get('#error-nombre').should('contain', 'El nombre debe tener al menos 4 caracteres');
     });
 
-    it('3. Campo Nombre: Debe rechazar números y caracteres especiales no permitidos', () => {
+    it('Validar rechazo de números y caracteres especiales no permitidos en el campo Nombre', () => {
         cy.get('[data-testid="input-nombre"]').clear().type('Carlos123#$');
         cy.get('[data-testid="btn-enviar"]').click();
         cy.get('#error-nombre').should('contain', 'El nombre solo puede contener letras y espacios');
     });
 
-    it('4. Campo Nombre: Debe rechazar nombres ya registrados en base de datos', () => {
+    it('Validar rechazo de nombres duplicados ya existentes en la base de datos', () => {
         cy.get('[data-testid="input-nombre"]').clear().type('Juan Pérez');
         cy.get('[data-testid="btn-enviar"]').click();
         cy.get('#error-nombre').should('contain', 'Este nombre ya está registrado');
     });
 
-    it('5. Campo Correo: Debe rechazar formatos inválidos de correo electrónico', () => {
+    it('Validar rechazo de formatos inválidos de correo electrónico', () => {
         cy.get('[data-testid="input-correo"]').type('correo-invalido-sin-arroba');
         cy.get('[data-testid="btn-enviar"]').click();
         cy.get('#error-correo').should('contain', 'Ingresa un correo válido');
     });
 
-    it('6. Campo Correo: Debe rechazar correos ya registrados', () => {
+    it('Validar rechazo de correos electrónicos ya registrados', () => {
         cy.get('[data-testid="input-correo"]').clear().type('test@correo.com');
         cy.get('[data-testid="btn-enviar"]').click();
         cy.get('#error-correo').should('contain', 'Este correo ya está registrado');
     });
 
-    it('7. Campo Teléfono: Debe rechazar letras, símbolos o longitud diferente a 10 dígitos', () => {
+    it('Validar que el campo Teléfono solo admita números y exactamente 10 dígitos', () => {
         // Con letras/símbolos
         cy.get('[data-testid="input-telefono"]').type('55-1234-AB');
         cy.get('[data-testid="btn-enviar"]').click();
@@ -62,7 +62,7 @@ describe('Laboratorio QA - Módulo 2: Formularios con Validaciones y Casos de Bo
         cy.get('#error-telefono').should('contain', 'El teléfono debe tener exactamente 10 dígitos');
     });
 
-    it('8. Selects Dependientes: Debe poblar dinámicamente las ciudades según el país seleccionado', () => {
+    it('Validar carga dinámica de ciudades según el país seleccionado en los selects dependientes', () => {
         // México
         cy.get('[data-testid="select-pais"]').select('mexico');
         cy.get('[data-testid="select-ciudad"]').should('contain', 'CDMX');
@@ -81,7 +81,7 @@ describe('Laboratorio QA - Módulo 2: Formularios con Validaciones y Casos de Bo
         cy.get('[data-testid="select-ciudad"]').should('contain', 'Córdoba');
     });
 
-    it('9. Formulario Completo: Debe enviar exitosamente el formulario con todos los datos válidos', () => {
+    it('Validar registro y envío exitoso con todos los campos válidos, archivos adjuntos y términos aceptados', () => {
         cy.get('[data-testid="input-nombre"]').type('Valeria Morales');
         cy.get('[data-testid="input-correo"]').type('valeria.morales.qa@ejemplo.com');
         cy.get('[data-testid="input-telefono"]').type('5512349876');

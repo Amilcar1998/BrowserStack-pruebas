@@ -5,13 +5,13 @@ describe('Portal Rodrigo Villanueva - Pruebas E2E de Inicio y Navegación', () =
         cy.visit(BASE_URL);
     });
 
-    it('Debe cargar la página principal con el título correcto y elementos del encabezado', () => {
+    it('Validar la carga correcta de la página principal, encabezado y título', () => {
         cy.title().should('include', 'Rodrigo Igor Villanueva Nieto');
         cy.get('header.header').should('be.visible');
         cy.get('#menu').should('exist');
     });
 
-    it('Debe validar que las opciones del menú de navegación estén presentes', () => {
+    it('Validar la presencia y visibilidad de las opciones del menú de navegación', () => {
         cy.get('#menu').within(() => {
             cy.contains('Home').should('be.visible');
             cy.contains('Quiénes Somos').should('be.visible');
@@ -21,7 +21,7 @@ describe('Portal Rodrigo Villanueva - Pruebas E2E de Inicio y Navegación', () =
         });
     });
 
-    it('Debe probar el Slider Principal (Hero Slider) cambiando slides con los botones', () => {
+    it('Validar el funcionamiento del Slider Principal interactuando con los botones de cambio de slide', () => {
         cy.get('.hero-slider').should('be.visible');
         cy.get('.slide').should('have.length.at.least', 2);
         
@@ -37,13 +37,13 @@ describe('Portal Rodrigo Villanueva - Pruebas E2E de Inicio y Navegación', () =
         cy.get('.slide.active').should('be.visible');
     });
 
-    it('Debe verificar la existencia de las secciones dinámicas (Quiénes Somos, Cursos, Videos)', () => {
+    it('Validar la existencia y renderizado de las secciones dinámicas (Quiénes Somos, Cursos, Videos)', () => {
         cy.get('#sobre-mi-container').scrollIntoView().should('be.visible');
         cy.get('#cursos-container').scrollIntoView().should('be.visible');
         cy.get('#videos-container').scrollIntoView().should('be.visible');
     });
 
-    it('Debe permitir la navegación hacia el Laboratorio de Pruebas QA', () => {
+    it('Validar la navegación interactiva hacia el Laboratorio de Pruebas QA', () => {
         cy.get('#menu').contains('Laboratorio QA').invoke('removeAttr', 'target').click();
         cy.url().should('include', '/laboratorio');
         cy.get('h1').should('contain', 'Laboratorio');
