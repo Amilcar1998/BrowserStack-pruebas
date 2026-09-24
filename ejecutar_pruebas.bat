@@ -23,15 +23,16 @@ echo 1. Ejecutar Suite Rodrigo EN VIVO (Chrome + Evidencias)
 echo 2. Ejecutar Suite Rodrigo (Modo Silencioso / Headless)
 echo 3. Abrir Cypress UI Interactivo (cypress open)
 echo 4. Ejecutar todas las pruebas Cypress locales
-echo 5. Ejecutar en BrowserStack Cloud (browserstack-cypress run)
+echo 5. Ejecutar en BrowserStack Cloud (Multi-Navegador)
 echo 6. Ejecutar en LambdaTest Cloud (lambdatest-cypress run)
 echo 7. Ver Dashboard Ejecutivo Moderno (dashboard_ejecutivo.html)
 echo 8. Ver Dossier Oficial de Evidencias QA (Captura por cada CP)
-echo 9. Ver reporte HTML Mochawesome traducido
-echo 10. Ver reporte de vulnerabilidades (npm audit)
-echo 11. Salir
+echo 9. Ver Dossier Cross-Browser de BrowserStack (Multi-Navegador)
+echo 10. Ver reporte HTML Mochawesome traducido
+echo 11. Ver reporte de vulnerabilidades (npm audit)
+echo 12. Salir
 echo =======================================================
-set /p OPCION="Seleccione una opcion (1-11): "
+set /p OPCION="Seleccione una opcion (1-12): "
 
 if "%OPCION%"=="1" goto RODRIGO_HEADED
 if "%OPCION%"=="2" goto RODRIGO_RUN
@@ -41,9 +42,10 @@ if "%OPCION%"=="5" goto BS_RUN
 if "%OPCION%"=="6" goto LT_RUN
 if "%OPCION%"=="7" goto VIEW_MODERN_DASHBOARD
 if "%OPCION%"=="8" goto VIEW_DOSSIER
-if "%OPCION%"=="9" goto VIEW_REPORT
-if "%OPCION%"=="10" goto AUDIT_RUN
-if "%OPCION%"=="11" exit /b 0
+if "%OPCION%"=="9" goto VIEW_BS_DOSSIER
+if "%OPCION%"=="10" goto VIEW_REPORT
+if "%OPCION%"=="11" goto AUDIT_RUN
+if "%OPCION%"=="12" exit /b 0
 
 echo Opcion no valida.
 pause
@@ -110,6 +112,18 @@ if exist ".\cypress\results\dossier_evidencias_qa.html" (
 pause
 goto MENU
 
+:VIEW_BS_DOSSIER
+echo.
+echo Abriendo Dossier Cross-Browser Multi-Navegador de BrowserStack...
+node scripts/generar_dossier_browserstack.js
+if exist ".\cypress\results\dossier_browserstack_crossbrowser.html" (
+    start "" ".\cypress\results\dossier_browserstack_crossbrowser.html"
+) else (
+    echo Aun no existe el reporte de BrowserStack. Ejecute primero la opcion 5.
+)
+pause
+goto MENU
+
 :VIEW_MODERN_DASHBOARD
 echo.
 echo Abriendo Dashboard Ejecutivo Moderno (Alta Definicion)...
@@ -152,8 +166,12 @@ echo  Abriendo el Dashboard de BrowserStack en el navegador...
 echo =======================================================
 start https://automate.browserstack.com/dashboard/v2
 echo.
-echo Ejecutando pruebas en BrowserStack Cloud...
+echo Ejecutando pruebas en BrowserStack Cloud (Multi-Navegador)...
 call npx browserstack-cypress run
+node scripts/generar_dossier_browserstack.js
+if exist ".\cypress\results\dossier_browserstack_crossbrowser.html" (
+    start "" ".\cypress\results\dossier_browserstack_crossbrowser.html"
+)
 pause
 goto MENU
 
