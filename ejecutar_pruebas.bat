@@ -19,17 +19,18 @@ cls
 echo =======================================================
 echo          EJECUCION DE PRUEBAS DE AUTOMATIZACION
 echo =======================================================
-echo 1. Ejecutar Suite Rodrigo EN VIVO (Navegador Visible / Headed)
+echo 1. Ejecutar Suite Rodrigo EN VIVO (Navegador Chrome Visible)
 echo 2. Ejecutar Suite Rodrigo (Modo Silencioso / Headless)
 echo 3. Abrir Cypress UI Interactivo (cypress open)
 echo 4. Ejecutar todas las pruebas Cypress locales
 echo 5. Ejecutar en BrowserStack Cloud (browserstack-cypress run)
 echo 6. Ejecutar en LambdaTest Cloud (lambdatest-cypress run)
-echo 7. Ver reporte HTML personalizado en el navegador (Mochawesome)
-echo 8. Ver reporte de vulnerabilidades (npm audit)
-echo 9. Salir
+echo 7. Ver Dashboard Ejecutivo Moderno (dashboard_ejecutivo.html)
+echo 8. Ver reporte HTML Mochawesome traducido
+echo 9. Ver reporte de vulnerabilidades (npm audit)
+echo 10. Salir
 echo =======================================================
-set /p OPCION="Seleccione una opcion (1-9): "
+set /p OPCION="Seleccione una opcion (1-10): "
 
 if "%OPCION%"=="1" goto RODRIGO_HEADED
 if "%OPCION%"=="2" goto RODRIGO_RUN
@@ -37,9 +38,10 @@ if "%OPCION%"=="3" goto OPEN_UI
 if "%OPCION%"=="4" goto LOCAL_RUN
 if "%OPCION%"=="5" goto BS_RUN
 if "%OPCION%"=="6" goto LT_RUN
-if "%OPCION%"=="7" goto VIEW_REPORT
-if "%OPCION%"=="8" goto AUDIT_RUN
-if "%OPCION%"=="9" exit /b 0
+if "%OPCION%"=="7" goto VIEW_MODERN_DASHBOARD
+if "%OPCION%"=="8" goto VIEW_REPORT
+if "%OPCION%"=="9" goto AUDIT_RUN
+if "%OPCION%"=="10" exit /b 0
 
 echo Opcion no valida.
 pause
@@ -56,8 +58,9 @@ if exist ".\node_modules\.bin\cypress.cmd" (
     call npx cypress run --headed --browser chrome --spec "cypress/integration/rodrigo-villanueva/*.spec.js"
 )
 node scripts/traducir_reporte.js
-if exist ".\cypress\results\mochawesome\index.html" (
-    start "" ".\cypress\results\mochawesome\index.html"
+node scripts/generar_dashboard_moderno.js
+if exist ".\cypress\results\dashboard_ejecutivo.html" (
+    start "" ".\cypress\results\dashboard_ejecutivo.html"
 )
 pause
 goto MENU
@@ -73,6 +76,7 @@ if exist ".\node_modules\.bin\cypress.cmd" (
     call npx cypress run --spec "cypress/integration/rodrigo-villanueva/*.spec.js"
 )
 node scripts/traducir_reporte.js
+node scripts/generar_dashboard_moderno.js
 pause
 goto MENU
 
@@ -85,12 +89,25 @@ if exist ".\node_modules\.bin\cypress.cmd" (
     call npx cypress run
 )
 node scripts/traducir_reporte.js
+node scripts/generar_dashboard_moderno.js
+pause
+goto MENU
+
+:VIEW_MODERN_DASHBOARD
+echo.
+echo Abriendo Dashboard Ejecutivo Moderno (Alta Definicion)...
+node scripts/generar_dashboard_moderno.js
+if exist ".\cypress\results\dashboard_ejecutivo.html" (
+    start "" ".\cypress\results\dashboard_ejecutivo.html"
+) else (
+    echo Aun no existe el archivo de dashboard. Ejecute primero alguna prueba.
+)
 pause
 goto MENU
 
 :VIEW_REPORT
 echo.
-echo Abriendo reporte HTML personalizado...
+echo Abriendo reporte HTML Mochawesome traducido...
 node scripts/traducir_reporte.js
 if exist ".\cypress\results\mochawesome\index.html" (
     start "" ".\cypress\results\mochawesome\index.html"
