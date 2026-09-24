@@ -26,13 +26,15 @@ echo 4. Ejecutar todas las pruebas Cypress locales
 echo 5. Ejecutar en BrowserStack Cloud (Multi-Navegador)
 echo 6. Ejecutar en LambdaTest Cloud (lambdatest-cypress run)
 echo 7. Ver Dashboard Ejecutivo Moderno (dashboard_ejecutivo.html)
-echo 8. Ver Dossier Oficial de Evidencias QA (Captura por cada CP)
-echo 9. Ver Dossier Cross-Browser de BrowserStack (Multi-Navegador)
-echo 10. Ver reporte HTML Mochawesome traducido
-echo 11. Ver reporte de vulnerabilidades (npm audit)
-echo 12. Salir
+echo 8. Ver Dossier Oficial de Evidencias QA (HTML / Imprimir PDF)
+echo 9. Abrir Carpeta de Reportes Word por cada CP (.doc)
+echo 10. Abrir Reporte Maestro Consolidado en Word (.doc)
+echo 11. Ver Dossier Cross-Browser de BrowserStack (Cloud)
+echo 12. Ver reporte HTML Mochawesome traducido
+echo 13. Ver reporte de vulnerabilidades (npm audit)
+echo 14. Salir
 echo =======================================================
-set /p OPCION="Seleccione una opcion (1-12): "
+set /p OPCION="Seleccione una opcion (1-14): "
 
 if "%OPCION%"=="1" goto RODRIGO_HEADED
 if "%OPCION%"=="2" goto RODRIGO_RUN
@@ -42,10 +44,12 @@ if "%OPCION%"=="5" goto BS_RUN
 if "%OPCION%"=="6" goto LT_RUN
 if "%OPCION%"=="7" goto VIEW_MODERN_DASHBOARD
 if "%OPCION%"=="8" goto VIEW_DOSSIER
-if "%OPCION%"=="9" goto VIEW_BS_DOSSIER
-if "%OPCION%"=="10" goto VIEW_REPORT
-if "%OPCION%"=="11" goto AUDIT_RUN
-if "%OPCION%"=="12" exit /b 0
+if "%OPCION%"=="9" goto VIEW_WORD_FOLDER
+if "%OPCION%"=="10" goto VIEW_WORD_MASTER
+if "%OPCION%"=="11" goto VIEW_BS_DOSSIER
+if "%OPCION%"=="12" goto VIEW_REPORT
+if "%OPCION%"=="13" goto AUDIT_RUN
+if "%OPCION%"=="14" exit /b 0
 
 echo Opcion no valida.
 pause
@@ -64,8 +68,9 @@ if exist ".\node_modules\.bin\cypress.cmd" (
 node scripts/traducir_reporte.js
 node scripts/generar_dashboard_moderno.js
 node scripts/generar_dossier_evidencias.js
-if exist ".\cypress\results\dossier_evidencias_qa.html" (
-    start "" ".\cypress\results\dossier_evidencias_qa.html"
+node scripts/generar_reporte_word.js
+if exist ".\cypress\results\dashboard_ejecutivo.html" (
+    start "" ".\cypress\results\dashboard_ejecutivo.html"
 )
 pause
 goto MENU
@@ -83,6 +88,7 @@ if exist ".\node_modules\.bin\cypress.cmd" (
 node scripts/traducir_reporte.js
 node scripts/generar_dashboard_moderno.js
 node scripts/generar_dossier_evidencias.js
+node scripts/generar_reporte_word.js
 pause
 goto MENU
 
@@ -97,6 +103,31 @@ if exist ".\node_modules\.bin\cypress.cmd" (
 node scripts/traducir_reporte.js
 node scripts/generar_dashboard_moderno.js
 node scripts/generar_dossier_evidencias.js
+node scripts/generar_reporte_word.js
+pause
+goto MENU
+
+:VIEW_WORD_FOLDER
+echo.
+echo Abriendo carpeta de reportes Word por cada Caso de Prueba...
+node scripts/generar_reporte_word.js
+if exist ".\cypress\results\reportes_word_por_cp" (
+    start "" ".\cypress\results\reportes_word_por_cp"
+) else (
+    echo Aun no existen reportes. Ejecute primero alguna prueba.
+)
+pause
+goto MENU
+
+:VIEW_WORD_MASTER
+echo.
+echo Abriendo Reporte Maestro Consolidado en Word...
+node scripts/generar_reporte_word.js
+if exist ".\cypress\results\Reporte_Evidencias_QA_Casos_de_Prueba.doc" (
+    start "" ".\cypress\results\Reporte_Evidencias_QA_Casos_de_Prueba.doc"
+) else (
+    echo Aun no existe el archivo. Ejecute primero alguna prueba.
+)
 pause
 goto MENU
 
