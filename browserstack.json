@@ -28,6 +28,7 @@
     "build_name": "Build no: 1",
     "parallels": 2,
     "spec_timeout": 10,
-    "exclude": ["some-folder/test.js", "static/*.pdf"]
+    "specs": "cypress/integration/rodrigo-villanueva/*.spec.js",
+    "exclude": ["cypress/integration/1-getting-started/**", "cypress/integration/2-advanced-examples/**", "cypress/integration/busqueda.spec.js", "cypress/integration/google-search.spec.js"]
   }
 }

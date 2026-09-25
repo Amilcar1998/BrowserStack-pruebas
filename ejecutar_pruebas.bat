@@ -101,9 +101,9 @@ start https://automate.browserstack.com/dashboard/v2
 echo.
 echo Ejecutando pruebas en BrowserStack Cloud (Multi-Navegador)...
 if exist ".\node_modules\.bin\browserstack-cypress.cmd" (
-    call ".\node_modules\.bin\browserstack-cypress.cmd" run
+    call ".\node_modules\.bin\browserstack-cypress.cmd" run --no-wrap
 ) else (
-    call npx browserstack-cypress run
+    call npx browserstack-cypress run --no-wrap
 )
 node scripts/generar_dossier_browserstack.js
 if exist ".\cypress\results\dossier_browserstack_crossbrowser.html" (
