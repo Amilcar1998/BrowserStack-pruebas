@@ -1,9 +1,25 @@
+# Node & Dependencies
 node_modules/
-tmpBstackPackages/
-results/
-log/
-Downloads/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 npm_install_debug.log
 package-lock.json.bak
+
+# Test Artifacts & Outputs
+results/
+cypress/results/
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+Downloads/
+tmpBstackPackages/
+log/
+
+# Environment Variables
+.env
+.env.local
+
+# OS Generated
 .DS_Store
 Thumbs.db
