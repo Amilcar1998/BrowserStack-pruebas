@@ -10,7 +10,7 @@
     "cypress": "^16.1.0",
     "cypress-downloadfile": "^1.2.4",
     "cypress-mochawesome-reporter": "^5.0.0",
-    "lambdatest-cypress-cli": "^3.0.50"
+    "lambdatest-cypress-cli": "^3.0.51"
   },
   "overrides": {
     "serialize-javascript": "^7.0.5",
