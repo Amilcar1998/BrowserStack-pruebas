@@ -6,7 +6,7 @@
     "report:translate": "node scripts/traducir_reporte.js"
   },
   "devDependencies": {
-    "browserstack-cypress-cli": "^1.37.1",
+    "browserstack-cypress-cli": "^1.37.2",
     "cypress": "^16.1.0",
     "cypress-downloadfile": "^1.2.4",
     "cypress-mochawesome-reporter": "^5.0.0",
